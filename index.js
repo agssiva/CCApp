@@ -15,6 +15,8 @@ app.get('/', function (request, response) {
     response.redirect('/agent');
 });
 
+	res.send({"message" : "Success"});
+
 var server = http.createServer(app);
 var port = process.env.PORT || 1347;
 server.listen(port, () => {
