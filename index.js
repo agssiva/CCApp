@@ -1,13 +1,24 @@
+var express = require('express');
 var http = require('http');
+var path = require('path');
 
-var server = http.createServer(function(request, response) {
+// Create Express webapp.
+var app = express();
 
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello Azure!");
+var agent = path.join(__dirname, '/agent/app');
+app.use('/agent', express.static(agent));
 
+/**
+ * Redirect application by default to agent
+ */
+app.get('/', function (request, response) {
+    response.redirect('/agent');
 });
 
+var server = http.createServer(app);
 var port = process.env.PORT || 1347;
-server.listen(port);
+server.listen(port, () => {
+	console.log('Express server running on *:' + port);
+});
 
 console.log("Server running at http://localhost:%d", port);
