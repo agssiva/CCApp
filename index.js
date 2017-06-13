@@ -15,7 +15,9 @@ app.get('/', function (request, response) {
     response.redirect('/agent');
 });
 
+app.get('/api/login', (req, res) => {
 	res.send({"message" : "Success"});
+});
 
 var server = http.createServer(app);
 var port = process.env.PORT || 1347;
