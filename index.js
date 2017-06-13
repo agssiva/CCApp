@@ -6,13 +6,13 @@ var path = require('path');
 var app = express();
 
 var agent = path.join(__dirname, '/agent/app');
-app.use('/agent', express.static(agent));
+app.use('/', express.static(agent));
 
 /**
  * Redirect application by default to agent
  */
 app.get('/', function (request, response) {
-    response.redirect('/agent');
+    //response.redirect('/agent');
 });
 
 app.get('/api/login', (req, res) => {
