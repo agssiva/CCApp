@@ -15,7 +15,7 @@ app.get('/', function (request, response) {
     response.redirect('/agent');
 });
 
-app.get('/api/login', (req, res) => {
+app.get('/login', (req, res) => {
 	res.send({"message" : "Success"});
 });
 
